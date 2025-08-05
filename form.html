@@ -1,14 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference Registration</title>
+    <title>הרשמה לכנס</title>
 </head>
 
 <body>
-    <h1>Conference Registration Form</h1>
+    <h1>טופס הרשמה לכנס</h1>
+
+    <form>
+
+        <fieldset>
+            <legend>מידע אישי</legend>
+
+            <label for="fullName">שם:</label>
+            <input type="text" id="fullName" name="fullName" required minlength="2" placeholder="הכנס את שמך המלא">
+            <br>
+
+            <label for="email">אימייל:</label>
+            <input type="email" id="email" name="email" required placeholder="example@example.com">
+            <br>
+
+            <label for="phone">טלפון:</label>
+            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="0501234567">
+            <br>
+        </fieldset>
+
+        <fieldset>
+            <legend>כרטיס וסדנאות</legend>
+
+            <label for="ticketType">סוג כרטיס:</label>
+            <select id="ticketType" name="ticketType" required>
+                <option value=""> בחר </option>
+                <option value="standard">רגיל</option>
+                <option value="vip">VIP</option>
+                <option value="student">סטודנט</option>
+            </select>
+            <br>
+
+            <p>סדנאות:</p>
+            <input type="checkbox" id="web" name="workshops" value="Web Performance">
+            <label for="web">ביצועי רשת</label><br>
+
+            <input type="checkbox" id="accessibility" name="workshops" value="Accessibility">
+            <label for="accessibility">נגישות</label><br>
+
+            <input type="checkbox" id="testing" name="workshops" value="Testing">
+            <label for="testing">בדיקות</label><br>
+
+            <p>העדפת תזונה:</p>
+
+            <input type="radio" id="none" name="diet" value="None" checked>
+            <label for="none">ללא</label><br>
+
+            <input type="radio" id="vegan" name="diet" value="Vegan">
+            <label for="vegan">טבעוני</label><br>
+
+            <input type="radio" id="kosher" name="diet" value="Kosher">
+            <label for="kosher">כשר</label><br>
+
+            <input type="radio" id="halal" name="diet" value="Halal">
+            <label for="halal">חלאל</label><br>
+
+            <input type="radio" id="otherDiet" name="diet" value="Other">
+            <label for="otherDiet">אחר</label><br>
+
+            <div id="otherDietDetailsContainer" style="display: none;">
+                <label for="otherDietDetails">פרט:</label>
+                <input type="text" id="otherDietDetails" name="otherDietDetails" required
+                    placeholder="פרט את ההעדפה שלך">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>פרטי תשלום</legend>
+
+            <label for="cardNumber">מספר כרטיס:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required pattern="[0-9\s]{13,19}"
+                autocomplete="cc-number" placeholder="1111 2222 3333 4444">
+            <br>
+
+            <label for="expiry">תאריך תפוגה:</label>
+            <input type="month" id="expiry" name="expiry" required min="2025-08" autocomplete="cc-exp">
+            <br>
+
+            <label for="cvv">CVV:</label>
+            <input type="password" id="cvv" name="cvv" required pattern="[0-9]{3,4}" autocomplete="cc-csc"
+                placeholder="3 או 4 ספרות">
+            <br>
+        </fieldset>
+
+        <fieldset>
+            <legend>הסכמות</legend>
+
+            <div id="studentIdContainer" style="display: none;">
+                <label for="studentId">תעודת סטודנט:</label>
+                <input type="file" id="studentId" name="studentId" accept=".pdf,.jpg,.png" required>
+            </div>
+
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">אני מאשר את התנאים</label><br>
+        </fieldset>
+
+        <button type="submit">שלח</button>
+    </form>
+
 </body>
 
 </html>
